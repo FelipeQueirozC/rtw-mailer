@@ -1,3 +1,703 @@
 {
-  "documents": []
+  "documents": [
+    {
+      "generated_filename": "2603 RTW Report_Letter.pdf",
+      "listing_date": "15.04.26",
+      "sha256": "41240b0209c01ceb9ce652105beac20727b4b3b76147473000c1a8d4f7948e50",
+      "source_page": "factsheets_letters",
+      "status": "sent",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - March 2026",
+      "url": "https://www.rtwfunds.com/media/xonlghnr/rtw-biotech-opportunities-march-2026-factsheet-plus-quarterly-letter.pdf"
+    },
+    {
+      "generated_filename": "2602 RTW Report.pdf",
+      "listing_date": "13.03.26",
+      "sha256": "c13219312cf068fce5f951e5a490dba9f869630f468391fb2cf6743a738ea98c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - February 2026",
+      "url": "https://www.rtwfunds.com/media/gznbdzqp/rtw-biotech-opportunities-february-2026-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2601 RTW Report.pdf",
+      "listing_date": "13.02.26",
+      "sha256": "7ad380de702ad04bb7a8e9ce0aac4e0e4641268f1044d981b89b0e6afa6e1e09",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - January 2026",
+      "url": "https://www.rtwfunds.com/media/3wyl2sig/rtw-biotech-opportunities-january-2026-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2512 RTW Report_Letter.pdf",
+      "listing_date": "15.01.26",
+      "sha256": "56cb85c72c03b764d633b7e12dbcc8a00ebc00aed2f2bfcf9baedb8813ae3bf8",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - December 2025",
+      "url": "https://www.rtwfunds.com/media/mofl3d53/rtw-biotech-opportunities-december-2025-factsheet-plus-q4-update.pdf"
+    },
+    {
+      "generated_filename": "2511 RTW Report.pdf",
+      "listing_date": "12.12.25",
+      "sha256": "e37e782efe8da87d278ca9720b1f1c7797f14260a505327e35484405848fa531",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - November 2025",
+      "url": "https://www.rtwfunds.com/media/wsdpnjur/rtw-biotech-opportunities-november-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2510 RTW Report.pdf",
+      "listing_date": "14.11.25",
+      "sha256": "12bff9b6a9e0be099846af3d812484ccdd12b7bae146f550e9e04e1f6aecda94",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - October 2025",
+      "url": "https://www.rtwfunds.com/media/o5npn5dt/rtw-biotech-opportunities-october-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2509 RTW Report_Letter.pdf",
+      "listing_date": "14.10.25",
+      "sha256": "3d8eec3b424db8abe141539ef1f6d4afae1966a9befede4cb09eee57a0963d4c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - September 2025",
+      "url": "https://www.rtwfunds.com/media/341czamm/rtw-biotech-opportunities-september-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2508 RTW Report.pdf",
+      "listing_date": "15.09.25",
+      "sha256": "cfd1792a8eca12f77ee507d719636edde87704dc43c6a7891e0f2110e253a13a",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - August 2025",
+      "url": "https://www.rtwfunds.com/media/2ufhrioy/rtw-biotech-opportunities-august-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2507 RTW Report.pdf",
+      "listing_date": "14.08.25",
+      "sha256": "c29361f897ea576705d74fefdacdbf18988e0c04e1092f0a4bb3c69729a69c8e",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - July 2025",
+      "url": "https://www.rtwfunds.com/media/xchejxtk/rtw-biotech-opportunities-july-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2506 RTW Report_Letter.pdf",
+      "listing_date": "15.07.25",
+      "sha256": "b5754ce2f7448ec0658ae294a57b6186eaa179fc3c94c124ce582a567b07af7d",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - June 2025",
+      "url": "https://www.rtwfunds.com/media/drbldvj3/rtw-biotech-opportunities-june-2025-factsheet-plus-quarterly-letter.pdf"
+    },
+    {
+      "generated_filename": "2505 RTW Report.pdf",
+      "listing_date": "12.06.25",
+      "sha256": "fc59b6b903bce4c45e5ce4d785dd036dc02b282ac56f7abf36eb1a3a1e00c281",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - May 2025",
+      "url": "https://www.rtwfunds.com/media/ncvkinyr/rtw-biotech-opportunities-may-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2504 RTW Report.pdf",
+      "listing_date": "14.05.25",
+      "sha256": "db752cbe3459c5cb35586d6c681c50ba2eabd5c0c0b47b6af80deee9eda88f16",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - April 2025",
+      "url": "https://www.rtwfunds.com/media/zzopvlby/rtw-biotech-opportunities-april-2025-factsheet-plus-commentary.pdf"
+    },
+    {
+      "generated_filename": "2503 RTW Report_Letter.pdf",
+      "listing_date": "14.04.25",
+      "sha256": "c41689e292bf40d1e24f8c0d168baa26eabcf0c6b41411a16c6efeb463139085",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - March 2025",
+      "url": "https://www.rtwfunds.com/media/shxlbm0d/rtw-biotech-opportunitiesmarch-2025-factsheet-plusq1-letter_vff.pdf"
+    },
+    {
+      "generated_filename": "2502 RTW Report.pdf",
+      "listing_date": "14.03.25",
+      "sha256": "eb1b0bb1b8ca38bf5537ff08ef929105684e6ed00d058b70aa7c651571a6d99e",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Commentary - February 2025",
+      "url": "https://www.rtwfunds.com/media/keae3rgc/rtw-biotech-opportunities-february-2025-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2501 RTW Report.pdf",
+      "listing_date": "14.02.25",
+      "sha256": "f7422338ec5a730587ef5f68e1a316484e3b64a39cf4234c44c15526d7d362fe",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - January 2025",
+      "url": "https://www.rtwfunds.com/media/o3dbjwnc/rtw-biotech-opportunities-january-2025-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2412 RTW Report_Letter.pdf",
+      "listing_date": "15.01.25",
+      "sha256": "da005d71992509357dbce80517eefad176d454772730017b9dcb8e05b0116319",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - December 2024",
+      "url": "https://www.rtwfunds.com/media/qn0pmgxu/rtw-biotech-opportunities-december-2024-factsheet-plus-q4-letter.pdf"
+    },
+    {
+      "generated_filename": "2411 RTW Report.pdf",
+      "listing_date": "13.12.24",
+      "sha256": "63feb76ed7362f03347a713b97ac7e3f8372f4262b67da33f62a3b942361cf5c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - November 2024",
+      "url": "https://www.rtwfunds.com/media/wrfojcp1/rtw-biotech-opportunities-november-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2410 RTW Report.pdf",
+      "listing_date": "14.11.24",
+      "sha256": "2bbf3245941130cecfa5380de9a8b3a8e5683b5069885b4aaed8b0f38ec0fcef",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - October 2024",
+      "url": "https://www.rtwfunds.com/media/zp0dfe3o/rtw-biotech-opportunities-october-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2409 RTW Report_Letter.pdf",
+      "listing_date": "14.10.24",
+      "sha256": "8e019010b69075c8e9cff9e13427db084c9d97e41a41e03f6aca0285fd3f40ff",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - September 2024",
+      "url": "https://www.rtwfunds.com/media/gljo2ity/rtw-biotech-opportunities-september-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2408 RTW Report.pdf",
+      "listing_date": "16.09.24",
+      "sha256": "085b04a28a6f5b13e2e5df96eeddcd936690605049eec98cc148cffe2945eb2c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - August 2024",
+      "url": "https://www.rtwfunds.com/media/dzkillzp/rtw-biotech-opportunities-august-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2407 RTW Report.pdf",
+      "listing_date": "14.08.24",
+      "sha256": "0ab232d77e6cc4d7cf5c3a98570f55d1852976c8185a981fdd7fbc92fe302f4f",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - July 2024",
+      "url": "https://www.rtwfunds.com/media/ujhd30cl/rtw-biotech-opportunities-july-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2406 RTW Report_Letter.pdf",
+      "listing_date": "15.07.24",
+      "sha256": "435e4b24e5d86ae8b32cbdf8b2a9d2f323808b4c63603df8f1571e0e4e82dbcb",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - June 2024",
+      "url": "https://www.rtwfunds.com/media/05ndc3tl/rtw-biotech-opportunities-june-2024-factsheet-q2-letter.pdf"
+    },
+    {
+      "generated_filename": "2405 RTW Report.pdf",
+      "listing_date": "14.06.24",
+      "sha256": "fe26cfd1304fe4e1c61c85199d0ee4ce1c661d94077df922a3a18140bce5f16e",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - May 2024",
+      "url": "https://www.rtwfunds.com/media/nofbntee/rtw-biotech-opportunities-may-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2404 RTW Report.pdf",
+      "listing_date": "14.05.24",
+      "sha256": "670029bef51e0d2fe6fa741c5539234b0676d92888f4d4ade124e3bfd9def317",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - April 2024",
+      "url": "https://www.rtwfunds.com/media/oswld3uo/rtw-biotech-opportunities-april-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2403 RTW Report_Letter.pdf",
+      "listing_date": "31.03.24",
+      "sha256": "fe3f93c7e57dcfea1caab2a8b5c6019495e292c1315652b12a16a79674a730ce",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - March 2024",
+      "url": "https://www.rtwfunds.com/media/biwpy3zp/rtw-biotech-opportunities-march-2024-factsheet-q1-letter.pdf"
+    },
+    {
+      "generated_filename": "2402 RTW Report.pdf",
+      "listing_date": "14.03.24",
+      "sha256": "cc248a398604eae4e3453eaa4fcc5de096f902c6151000bfd928b2a2ca361de7",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - February 2024",
+      "url": "https://www.rtwfunds.com/media/k10bwgkw/rtw-biotech-opportunities-february-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2401 RTW Report.pdf",
+      "listing_date": "14.02.24",
+      "sha256": "8c8c8d4033d4886a97e18692dc7cccf716f4fe4a7e82ae904f61667d13d8a076",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - January 2024",
+      "url": "https://www.rtwfunds.com/media/cyebjupy/rtw-biotech-opportunities-january-2024-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2312 RTW Report_Letter.pdf",
+      "listing_date": "15.01.24",
+      "sha256": "f365416db21a2bccf586d6ce4f59a1c51329918f5b5abe43373a6bb6dd1812d8",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - December 2023",
+      "url": "https://www.rtwfunds.com/media/0ebffk4i/rtw-biotech-opportunities-december-2023-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2310 RTW Report.pdf",
+      "listing_date": "13.11.23",
+      "sha256": "6ef571a4065d09ecb44c1781212615ada217140e21dccafd584e935bdc74c329",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - October 2023",
+      "url": "https://www.rtwfunds.com/media/yfhhch4m/rtw-biotech-opportunities-october-2023-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2309 RTW Report_Letter.pdf",
+      "listing_date": "13.10.23",
+      "sha256": "0adb0f66417876f4a1e58007117b2d30e1f51effc43759716defedc94ad2c33e",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - September 2023",
+      "url": "https://www.rtwfunds.com/media/soakzfpb/rtw-biotech-opportunities-september-2023-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2308 RTW Report.pdf",
+      "listing_date": "15.09.23",
+      "sha256": "04bc243c9c7b5f9c7063d3baad36e869a812c2a6f49d6d6bf7c595a51698b57c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - August 2023",
+      "url": "https://www.rtwfunds.com/media/wdjclrmv/rtw-biotech-opportunities-august-2023-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2307 RTW Report.pdf",
+      "listing_date": "31.07.23",
+      "sha256": "515f8ec66682d636b755f681d13f29a253f0599ed767d1ea2d349ca461b1542f",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - July 2023",
+      "url": "https://www.rtwfunds.com/media/mt2pyxty/rtw-biotech-opportunities-july-2023-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2306 RTW Report_Letter.pdf",
+      "listing_date": "30.06.23",
+      "sha256": "996624425384300f8dfb31e6bfbe599bfc3803d9cc78c8d6202f79d856d9f022",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - June 2023",
+      "url": "https://www.rtwfunds.com/media/3vto52th/rtw-biotech-opportunities-june-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2305 RTW Report.pdf",
+      "listing_date": "31.05.23",
+      "sha256": "221ce914149898991de7daad3dbcbf5b665fecd6e2c172eb17ec01f7c684a54c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - May 2023",
+      "url": "https://www.rtwfunds.com/media/at3prioe/rtw-venture-fund-may-factsheet.pdf"
+    },
+    {
+      "generated_filename": "2304 RTW Report.pdf",
+      "listing_date": "30.04.23",
+      "sha256": "f298ca6f4d209dc7914819b39d4c0082897cb98e713063f55885453b463c6886",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet - April 2023",
+      "url": "https://www.rtwfunds.com/media/ma1n2cxl/rtw-venture-fund-factsheet-april-2023.pdf"
+    },
+    {
+      "generated_filename": "2303 RTW Report_Letter.pdf",
+      "listing_date": "31.03.23",
+      "sha256": "3c68873770d5b4562786087a415d279e5aa878dc518d845ba1cbd1b45de75d96",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet & Quarterly Letter - March 2023",
+      "url": "https://www.rtwfunds.com/media/2yqnecql/rtw-venture-fund-march-factsheet-and-q1-letter.pdf"
+    },
+    {
+      "generated_filename": "2212 RTW Report.pdf",
+      "listing_date": "31.12.22",
+      "sha256": "94ad735bce53c87428397b7d3202b79d2802c2628bb0c2d11f9f2aa4a05ed792",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q4 2022",
+      "url": "https://www.rtwfunds.com/media/wxdcysj0/rtw-venture-fund-fact-sheet-q4-22.pdf"
+    },
+    {
+      "generated_filename": "2209 RTW Report.pdf",
+      "listing_date": "30.09.22",
+      "sha256": "dc53767610296a128588db6d0f39c300815b20c01cfc37a87e4be0519d8a29b5",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q3 2022",
+      "url": "https://www.rtwfunds.com/media/dmnpf01n/rtw-venture-fund-fact-sheet-q3-22.pdf"
+    },
+    {
+      "generated_filename": "2206 RTW Report.pdf",
+      "listing_date": "30.06.22",
+      "sha256": "929f341d44ca720b1d7a509dd981e9de5431a97ebe3cd13a7e66d04d46168889",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q2 2022",
+      "url": "https://www.rtwfunds.com/media/uema4s5l/rtw-venture-fund-fact-sheet-q2-2022.pdf"
+    },
+    {
+      "generated_filename": "2203 RTW Report.pdf",
+      "listing_date": "31.03.22",
+      "sha256": "eb71b85383569fe5fbc843e38ffc60280c92d6563bce6703a7ed16e1de437647",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q1 2022",
+      "url": "https://www.rtwfunds.com/media/1zmff22p/rtw-venture-fund-fact-sheet-q1-2022.pdf"
+    },
+    {
+      "generated_filename": "2112 RTW Report.pdf",
+      "listing_date": "31.12.21",
+      "sha256": "3862d4ac0880b79bdde176708c259330ecf850662a3a877f74441e058a3a454c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q4 2021",
+      "url": "https://www.rtwfunds.com/media/ksgg1f4h/rtw-venture-fund-fact-sheet-q4-2021.pdf"
+    },
+    {
+      "generated_filename": "2109 RTW Report.pdf",
+      "listing_date": "30.09.21",
+      "sha256": "ec5be1639a82e81b473921f03b91521c6df454f1f01aa8884207bd85e7dba123",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q3 2021",
+      "url": "https://www.rtwfunds.com/media/yt4ns4kh/rtw-venture-fund-fact-sheet-q3-2021.pdf"
+    },
+    {
+      "generated_filename": "2106 RTW Report.pdf",
+      "listing_date": "30.06.21",
+      "sha256": "f615648db72dbe8fb0b57eee137030ffa594b35573431428f73da6efb8d45aae",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q2 2021",
+      "url": "https://www.rtwfunds.com/media/u1cdqclk/rtw-venture-fund-fact-sheet-q2-2021.pdf"
+    },
+    {
+      "generated_filename": "2103 RTW Report.pdf",
+      "listing_date": "31.03.21",
+      "sha256": "749ee1f8e072afeb5fb05a05b83af4ef7a6575f83daf41f05e0e651a27f6efc8",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q1 2021",
+      "url": "https://www.rtwfunds.com/media/ekjptgqx/rtw-venture-fund-fact-sheet_q1-2021.pdf"
+    },
+    {
+      "generated_filename": "2012 RTW Report.pdf",
+      "listing_date": "31.12.20",
+      "sha256": "61753fed0012a4aafe257e100489f89f07fda51ecd3046baf66dde0a5a2c2b45",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q4 2020",
+      "url": "https://www.rtwfunds.com/media/dnck2ko3/rtw-venture-fund-fact-sheet_q4-2020.pdf"
+    },
+    {
+      "generated_filename": "2009 RTW Report.pdf",
+      "listing_date": "30.09.20",
+      "sha256": "80844afa7cdd9144352e484d38c91c5a6168d6a66c692c99d6b22949aafb5444",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q3 2020",
+      "url": "https://www.rtwfunds.com/media/cepgyds4/rtw-venture-fund-fact-sheet_q3-2020.pdf"
+    },
+    {
+      "generated_filename": "2006 RTW Report.pdf",
+      "listing_date": "30.06.20",
+      "sha256": "68c0c4db4155237775b80a9137fdb001bf5520625c874ca0cd21abac7a9dbf5c",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q2 2020",
+      "url": "https://www.rtwfunds.com/media/5gedrtj1/rtw-venture-fund-fact-sheet_q2-2020.pdf"
+    },
+    {
+      "generated_filename": "2003 RTW Report.pdf",
+      "listing_date": "31.03.20",
+      "sha256": "ead6d41288edc673a96d619abd4be475a04b990dea76a41970a93317004b9faa",
+      "source_page": "factsheets_letters",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "Factsheet Q1 2020",
+      "url": "https://www.rtwfunds.com/media/ppcdllqp/rtw-venture-fund-fact-sheet_2020-q1-update.pdf"
+    },
+    {
+      "generated_filename": "2512 Annual Report and Audited Financial Statements.pdf",
+      "sha256": "f6993fc30100c6a054ddd31a4f34c58bc9c91fed2e8edaf46549d521d8314aa6",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2025 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/lswnkkuo/rtw-biotech-opportunities_annual-report-and-audited-consolidated-financial-statements_year-end-2025.pdf"
+    },
+    {
+      "generated_filename": "2512 Annual Results Presentation.pdf",
+      "listing_date": "30.03.26",
+      "sha256": "a4498b0357a1bf7bb116c7acf1b331b91c6f079fa3db4a1e68b3590657d570c6",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2025 Annual Results Presentation",
+      "url": "https://www.rtwfunds.com/media/wgkdsrlk/rtw-biotech-opportunities-2025-annual-results-presentation.pdf"
+    },
+    {
+      "generated_filename": "2506 Interim Report and Financial Statements.pdf",
+      "listing_date": "11.09.25",
+      "sha256": "e1aab14c192e76317b508e005a226296c61f659d8b4c47f9f480548fda3e168c",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2025 Interim Report and Financial Statements",
+      "url": "https://www.rtwfunds.com/media/4znfq4ws/rtw-biotech-opportunities_june-2025-half-yearly-report-and-financial-statementspdf.pdf"
+    },
+    {
+      "generated_filename": "2506 Interim Results Presentation.pdf",
+      "listing_date": "11.09.25",
+      "sha256": "bc54f97412077c8e52ad6a13a987bbcc802a5a226447725237993ef64c5c25e9",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2025 Interim Results Presentation",
+      "url": "https://www.rtwfunds.com/media/etupoaav/rtw-biotech-opportunities-2025-interim-results-presentation-11-september-2025_vf.pdf"
+    },
+    {
+      "generated_filename": "2412 Annual Report and Audited Financial Statements.pdf",
+      "listing_date": "31.12.24",
+      "sha256": "012940daf89320403f4dd5742cf9867027135bb2e8002b4c4c1df5abf178ec03",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2024 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/o1tnsvhu/rtw-biotech-opportunities_annual-report-and-audited-consolidated-financial-statements_year-end-2024.pdf"
+    },
+    {
+      "generated_filename": "2412 Annual Results Presentation.pdf",
+      "listing_date": "31.12.24",
+      "sha256": "f4bf1a9d1098ddf8f72ab92bd5ac48681ccb63f8e4ea9d76f52c16c061a537a6",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2024 Annual Results Presentation",
+      "url": "https://www.rtwfunds.com/media/uwnh2sa0/rtw-bio-2024-annual-result-presentation-31-march-2025.pdf"
+    },
+    {
+      "generated_filename": "2406 Interim Report and Financial Statements.pdf",
+      "listing_date": "30.06.24",
+      "sha256": "8199fed5a3636b54c607cce21e0abba4216ba8268340ce0920bd7b57db644a6e",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2024 Interim Report and Financial Statements",
+      "url": "https://www.rtwfunds.com/media/xhtakjiq/rtw-biotech-opportunities_june-2024-half-yearly-report-and-financial-statements.pdf"
+    },
+    {
+      "generated_filename": "2406 Interim Results Presentation.pdf",
+      "listing_date": "30.06.24",
+      "sha256": "bcd138cc524a2a6c29781880c27d46f3d9fcb02f146a27a34d3c6a7feda8f88d",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2024 Interim Results Presentation",
+      "url": "https://www.rtwfunds.com/media/eixlcsyu/rtw-bio-interim-results-presentation-september-2024.pdf"
+    },
+    {
+      "generated_filename": "2312 Annual Report and Audited Financial Statements.pdf",
+      "listing_date": "31.12.23",
+      "sha256": "3ec04b3f0b7e74a7eabe857e0ea257b5df1bfc54c022f6935c2056d5e074c837",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2023 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/t1idpzmn/rtw-biotech-opportunities_annual-report-year-ended-2023.pdf"
+    },
+    {
+      "generated_filename": "2312 Annual Review + Outlook Presentation.pdf",
+      "listing_date": "31.12.23",
+      "sha256": "60c0785b6cdf76abef73e4c92aa15b12ad44723be8b2ee2975f246b6c85ee478",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2023 Annual Review + 2024 Outlook Presentation",
+      "url": "https://www.rtwfunds.com/media/yw4j10aj/rtw-bio-2023-review-2024-outlook-webinar-january-2024.pdf"
+    },
+    {
+      "generated_filename": "2306 Interim Report and Financial Statements.pdf",
+      "listing_date": "30.06.23",
+      "sha256": "70e5e47948f73ec0ab41fef31a061081c1d021f0c9afb94aedfb9ff640872beb",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2023 Interim Report and Financial Statements",
+      "url": "https://www.rtwfunds.com/media/amzfknwt/rtw-biotech-opportunities_interim-report-2023.pdf"
+    },
+    {
+      "generated_filename": "2306 Interim Results Presentation.pdf",
+      "listing_date": "30.06.23",
+      "sha256": "5e8782640ec470b924c85a9c9753b8d3aad53cf208b6dadd88c15b28f8478379",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2023 Interim Results Presentation",
+      "url": "https://www.rtwfunds.com/media/zcrf3pyv/2023-interim-report-presentation.pdf"
+    },
+    {
+      "generated_filename": "2212 Annual Report and Audited Financial Statements.pdf",
+      "listing_date": "31.12.22",
+      "sha256": "a5547ec8e99af8c774ef43bb972d70e997c2773a325ee602a660f0b5bf654d54",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2022 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/eijfmdic/rtw-vf-annual-report-2022-final.pdf"
+    },
+    {
+      "generated_filename": "2212 Annual Results Presentation.pdf",
+      "listing_date": "31.12.22",
+      "sha256": "5c9a647d7e155fdd72e5024c32126cb14f4556a74ea651d932dd676d34280b86",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2022 Annual Results Presentation",
+      "url": "https://www.rtwfunds.com/media/2c2eur3z/rtw-venture-fund-ltd-2022-review-2023-outlook-webinar-january-2023.pdf"
+    },
+    {
+      "generated_filename": "2206 Interim Report and Financial Statements.pdf",
+      "listing_date": "30.06.22",
+      "sha256": "ff175af07f4027fbc7e2ee539475f09ce7408a72526dd5fcbc2ad1f8643aa179",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2022 Interim Report and Financial Statements",
+      "url": "https://www.rtwfunds.com/media/45qjs0n0/rtw-venture-fund-interim-report-2022.pdf"
+    },
+    {
+      "generated_filename": "2206 Interim Results Presentation.pdf",
+      "listing_date": "30.06.22",
+      "sha256": "4bfa24994d1dbf77f3f924b87895a9bd99159fe1adbe6421c7eb0da6d41efe10",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2022 Interim Results Presentation",
+      "url": "https://www.rtwfunds.com/media/tbrnuhb0/rtw-venture-fund-ltd-interim-results-presentation-september-2022.pdf"
+    },
+    {
+      "generated_filename": "2112 Annual Report and Audited Financial Statements.pdf",
+      "listing_date": "31.12.21",
+      "sha256": "9508ebedf5ccb10d0cc2435fee33042c3bdc47a28c8ae651d68e58db04aebe54",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2021 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/qnudmujt/annual-report-and-audited-financial-statements-2021.pdf"
+    },
+    {
+      "generated_filename": "2112 Annual Results Presentation.pdf",
+      "listing_date": "31.12.21",
+      "sha256": "21af6367ede1bdfc48315e79f044e4325a4e940ad2fc1d1f3277c7035b10beb7",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2021 Annual Results Presentation",
+      "url": "https://www.rtwfunds.com/media/sx1cvy4y/rtw-venture-fund-annual-results-2021.pdf"
+    },
+    {
+      "generated_filename": "2106 Interim Report and Financial Statements.pdf",
+      "listing_date": "30.06.21",
+      "sha256": "2a0bb5af92a2d4e0e431aad5184d523ecbd7ed611e000750e0cd9b49af0544be",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2021 Interim Report and Financial Statements",
+      "url": "https://www.rtwfunds.com/media/feajk2a3/rtw_interim_fs_signed.pdf"
+    },
+    {
+      "generated_filename": "2012 Annual Report and Audited Financial Statements.pdf",
+      "listing_date": "31.12.20",
+      "sha256": "d1283389ffbcc1440df80bc84292dc217038959ca03c2b9157e1811b42370e13",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2020 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/vvwfxj52/rtw-venture-fund-annual-report-and-audited-financial-statements-2020.pdf"
+    },
+    {
+      "generated_filename": "2006 Interim Report and Financial Statements.pdf",
+      "listing_date": "30.06.20",
+      "sha256": "a323e89f9ab8c6e4a166f228b057957a65892eed579c49386a82114f99ebdeaf",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2020 Interim Report and Financial Statements",
+      "url": "https://www.rtwfunds.com/media/5dmlwp3j/6259-rtw-ir20-20-09-23-web-singles.pdf"
+    },
+    {
+      "generated_filename": "1912 Annual Report and Audited Financial Statements.pdf",
+      "listing_date": "31.12.19",
+      "sha256": "a47c4a709b1add757bc5a77b26b1549c58b79a95a224d430dd37fdc492492907",
+      "source_page": "results_presentations",
+      "status": "seeded",
+      "timestamp": "2026-05-10T13:46:56Z",
+      "title": "2019 Annual Report and Audited Financial Statements",
+      "url": "https://www.rtwfunds.com/media/0yrftz2l/annual-report-and-audited-financial-statements-2019.pdf"
+    }
+  ]
 }

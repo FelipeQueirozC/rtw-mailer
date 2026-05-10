@@ -10,3 +10,4 @@ dist/
 build/
 *.egg-info/
 sent_documents.json.tmp
+output/

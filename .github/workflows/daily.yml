@@ -2,7 +2,7 @@ name: Daily RTW Mailer
 
 on:
   schedule:
-    - cron: "30 10 * * *"
+    - cron: "0 14 * * 1-5"
   workflow_dispatch:
 
 permissions:

@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup, Tag
 RESULTS_URL = "https://www.rtwfunds.com/rtw-biotech-opportunities-ltd/results-presentations/"
 FACTS_URL = "https://www.rtwfunds.com/rtw-biotech-opportunities-ltd/factsheets-letters/"
 DEFAULT_STATE_FILE = Path("sent_documents.json")
+DEFAULT_OUTPUT_DIR = Path("output")
 DEFAULT_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -53,6 +54,11 @@ QUARTER_MONTHS = {
     "4": 12,
 }
 
+SOURCE_LABELS = {
+    "factsheets_letters": "Factsheets & Letters",
+    "results_presentations": "Results & Presentations",
+}
+
 
 @dataclass(frozen=True)
 class Document:
@@ -71,6 +77,15 @@ class EmailConfig:
     api_key: str
     from_email: str
     to_emails: list[str]
+
+
+def log(message: str) -> None:
+    timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    print(f"[{timestamp}] {message}", flush=True)
+
+
+def source_label(source_page: str) -> str:
+    return SOURCE_LABELS.get(source_page, source_page)
 
 
 def normalize_text(value: str) -> str:
@@ -241,6 +256,8 @@ def scrape_source(
 ) -> list[Document]:
     documents: list[Document] = []
     seen_urls: set[str] = set()
+    label = source_label(source_page)
+    log(f"Scraping {label}: {source_url}")
 
     for page in range(1, max_pages + 1):
         params: dict[str, Any] | None = None
@@ -249,6 +266,7 @@ def scrape_source(
             if source_page == "results_presentations":
                 params["type"] = ""
 
+        log(f"Fetching {label} page {page}")
         html = fetch_html(session, source_url, params=params)
         page_url = requests.Request("GET", source_url, params=params).prepare().url or source_url
         page_documents = parse_documents(html, source_page, source_url, page_url)
@@ -261,20 +279,25 @@ def scrape_source(
             new_page_documents.append(doc)
 
         if not new_page_documents:
+            log(f"No new unique PDFs found on {label} page {page}; stopping pagination.")
             break
 
+        log(f"Found {len(new_page_documents)} unique PDFs on {label} page {page}.")
         for doc in new_page_documents:
             seen_urls.add(doc.url)
             documents.append(doc)
 
+    log(f"Finished {label}: {len(documents)} unique PDFs discovered.")
     return documents
 
 
 def scrape_all_documents() -> list[Document]:
+    log("Starting RTW document scrape.")
     session = make_http_session()
     documents = []
     documents.extend(scrape_source(session, "factsheets_letters", FACTS_URL))
     documents.extend(scrape_source(session, "results_presentations", RESULTS_URL))
+    log(f"Scrape complete: {len(documents)} total unique PDFs discovered.")
     return documents
 
 
@@ -310,6 +333,21 @@ def sha256_hex(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def output_path_for_filename(output_dir: Path, filename: str) -> Path:
+    safe_name = Path(filename).name
+    if not safe_name or safe_name != filename:
+        raise ValueError(f"Unsafe output filename: {filename}")
+    return output_dir / safe_name
+
+
+def save_pdf_to_output(output_dir: Path, filename: str, pdf_bytes: bytes) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    path = output_path_for_filename(output_dir, filename)
+    with path.open("wb") as file:
+        file.write(pdf_bytes)
+    return path
+
+
 def load_state(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {"documents": []}
@@ -337,6 +375,16 @@ def save_state(path: Path, state: dict[str, Any]) -> None:
 
 def state_urls(state: dict[str, Any]) -> set[str]:
     return {entry["url"] for entry in state.get("documents", []) if isinstance(entry, dict) and entry.get("url")}
+
+
+def state_status_counts(state: dict[str, Any]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for entry in state.get("documents", []):
+        if not isinstance(entry, dict):
+            continue
+        status = str(entry.get("status") or "unknown")
+        counts[status] = counts.get(status, 0) + 1
+    return counts
 
 
 def is_empty_state(state: dict[str, Any]) -> bool:
@@ -451,50 +499,116 @@ def run_dry_run(documents: list[Document], state: dict[str, Any]) -> int:
     return 0
 
 
-def run_bootstrap(documents: list[Document], state_path: Path, email_config: EmailConfig) -> int:
+def run_bootstrap(documents: list[Document], state_path: Path, email_config: EmailConfig, output_dir: Path) -> int:
     latest = newest_factsheet_document(documents)
     session = make_http_session()
+    log("First production run detected: bootstrapping current archive.")
+    log(f"Will email latest Factsheets & Letters document only: {latest.generated_filename}")
+    log(f"Will seed {len(documents) - 1} historical documents and save seeded PDFs under {output_dir}.")
 
     pdf_cache: dict[str, bytes] = {}
     hash_cache: dict[str, str] = {}
-    for doc in documents:
+    for index, doc in enumerate(documents, start=1):
+        log(f"Downloading {index}/{len(documents)}: {doc.generated_filename}")
         pdf_bytes = download_pdf(session, doc.url)
         pdf_cache[doc.url] = pdf_bytes
         hash_cache[doc.url] = sha256_hex(pdf_bytes)
+        log(f"Downloaded {doc.generated_filename} ({len(pdf_bytes)} bytes, sha256={hash_cache[doc.url][:12]}...).")
 
+    log(f"Sending bootstrap email: {latest.generated_filename}")
     send_pdf_email(email_config, latest, pdf_cache[latest.url])
+    log(f"Email sent: {latest.generated_filename}")
 
     timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     state = {"documents": []}
     for doc in documents:
         status = "sent" if doc.url == latest.url else "seeded"
+        if status == "seeded":
+            path = save_pdf_to_output(output_dir, doc.generated_filename, pdf_cache[doc.url])
+            log(f"Saved seeded PDF: {path}")
         state["documents"].append(make_state_entry(doc, hash_cache[doc.url], status, sent_at=timestamp))
 
+    log(f"Writing bootstrap state to {state_path}.")
     save_state(state_path, state)
     print(f"Bootstrap complete. Sent {latest.generated_filename} and seeded {len(documents) - 1} documents.")
     return 0
 
 
-def run_regular(documents: list[Document], state: dict[str, Any], state_path: Path, email_config: EmailConfig) -> int:
-    new_documents = documents_for_regular_run(documents, state)
-    if not new_documents:
-        print("No new PDF documents found.")
+def download_seeded_from_state(state: dict[str, Any], output_dir: Path) -> int:
+    seeded_entries = [
+        entry
+        for entry in state.get("documents", [])
+        if isinstance(entry, dict) and entry.get("status") == "seeded"
+    ]
+    if not seeded_entries:
+        print("No seeded documents found in state.")
         return 0
 
+    log(f"Backfilling {len(seeded_entries)} seeded PDFs into {output_dir}.")
+    session = make_http_session()
+    downloaded = 0
+    skipped = 0
+
+    for entry in seeded_entries:
+        filename = str(entry.get("generated_filename", "")).strip()
+        url = str(entry.get("url", "")).strip()
+        expected_hash = str(entry.get("sha256", "")).strip()
+        if not filename or not url:
+            raise ValueError(f"Seeded state entry is missing generated_filename or url: {entry}")
+
+        path = output_path_for_filename(output_dir, filename)
+        if path.exists() and (not expected_hash or sha256_hex(path.read_bytes()) == expected_hash):
+            log(f"Skipping existing seeded PDF: {path}")
+            skipped += 1
+            continue
+
+        log(f"Downloading seeded PDF: {filename}")
+        pdf_bytes = download_pdf(session, url)
+        actual_hash = sha256_hex(pdf_bytes)
+        if expected_hash and actual_hash != expected_hash:
+            raise ValueError(f"Downloaded hash mismatch for {filename}: expected {expected_hash}, got {actual_hash}")
+
+        save_pdf_to_output(output_dir, filename, pdf_bytes)
+        downloaded += 1
+        print(f"Saved {path}")
+
+    print(f"Seeded PDF backfill complete. Downloaded {downloaded}, skipped {skipped}.")
+    return 0
+
+
+def run_regular(documents: list[Document], state: dict[str, Any], state_path: Path, email_config: EmailConfig) -> int:
+    new_documents = documents_for_regular_run(documents, state)
+    log(f"Regular run: {len(documents)} PDFs discovered, {len(state_urls(state))} URLs already in state.")
+    if not new_documents:
+        log("No new PDF documents found. Nothing to send.")
+        return 0
+
+    log(f"Found {len(new_documents)} new PDF documents to process.")
     session = make_http_session()
     failures = 0
 
-    for doc in new_documents:
+    for index, doc in enumerate(new_documents, start=1):
         try:
+            log(f"Processing new document {index}/{len(new_documents)}: {doc.generated_filename}")
+            log(f"Downloading PDF: {doc.url}")
             pdf_bytes = download_pdf(session, doc.url)
+            pdf_hash = sha256_hex(pdf_bytes)
+            log(f"Downloaded {doc.generated_filename} ({len(pdf_bytes)} bytes, sha256={pdf_hash[:12]}...).")
+            log(f"Sending email: {doc.generated_filename}")
             send_pdf_email(email_config, doc, pdf_bytes)
-            state["documents"].append(make_state_entry(doc, sha256_hex(pdf_bytes), "sent"))
+            log(f"Email sent: {doc.generated_filename}")
+            state["documents"].append(make_state_entry(doc, pdf_hash, "sent"))
+            log(f"Updating state file: {state_path}")
             save_state(state_path, state)
             print(f"Sent {doc.generated_filename}")
         except Exception as exc:
             failures += 1
             print(f"Failed to process {doc.generated_filename}: {exc}", file=sys.stderr)
 
+    if failures:
+        log(f"Run completed with {failures} failures.")
+    else:
+        log(f"Run completed successfully. Sent {len(new_documents)} new documents.")
     return 1 if failures else 0
 
 
@@ -502,6 +616,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Scrape RTW PDFs and email newly published documents.")
     parser.add_argument("--dry-run", action="store_true", help="Scrape and print generated filenames without sending emails or writing state.")
     parser.add_argument("--state-file", default=str(DEFAULT_STATE_FILE), help="Path to the JSON state file.")
+    parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR), help="Directory for locally saved seeded PDFs.")
+    parser.add_argument(
+        "--download-seeded",
+        action="store_true",
+        help="Download documents already marked as seeded in state into the output directory without sending emails.",
+    )
     return parser
 
 
@@ -511,6 +631,12 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         state = load_state(state_path)
+        counts = state_status_counts(state)
+        count_text = ", ".join(f"{status}={count}" for status, count in sorted(counts.items())) or "empty"
+        log(f"Loaded state from {state_path}: {len(state.get('documents', []))} documents ({count_text}).")
+        if args.download_seeded:
+            return download_seeded_from_state(state, Path(args.output_dir))
+
         documents = scrape_all_documents()
 
         if args.dry_run:
@@ -518,7 +644,7 @@ def main(argv: list[str] | None = None) -> int:
 
         email_config = email_config_from_env()
         if is_empty_state(state):
-            return run_bootstrap(documents, state_path, email_config)
+            return run_bootstrap(documents, state_path, email_config, Path(args.output_dir))
         return run_regular(documents, state, state_path, email_config)
     except Exception as exc:
         print(f"Error: {exc}", file=sys.stderr)

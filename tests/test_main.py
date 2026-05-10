@@ -5,6 +5,7 @@ import requests
 from main import (
     Document,
     download_pdf,
+    download_seeded_from_state,
     documents_for_regular_run,
     factsheet_filename,
     newest_factsheet_document,
@@ -171,3 +172,31 @@ def test_download_pdf_retries_transient_status() -> None:
     assert data == b"pdf"
     assert session.calls == 2
     assert sleeps == [1]
+
+
+def test_download_seeded_from_state_saves_output_and_skips_existing(monkeypatch, tmp_path) -> None:
+    pdf_bytes = b"%PDF seeded"
+    state = {
+        "documents": [
+            {
+                "url": "https://example.com/seeded.pdf",
+                "generated_filename": "2501 RTW Report.pdf",
+                "sha256": "750b61276e11d60c1685b7b3c8b66f2e13aa0a4670ee0d08410e40ae0c98eac5",
+                "status": "seeded",
+            },
+            {
+                "url": "https://example.com/sent.pdf",
+                "generated_filename": "2603 RTW Report_Letter.pdf",
+                "status": "sent",
+            },
+        ]
+    }
+
+    monkeypatch.setattr("main.make_http_session", lambda: object())
+    monkeypatch.setattr("main.download_pdf", lambda session, url: pdf_bytes)
+
+    assert download_seeded_from_state(state, tmp_path) == 0
+    assert (tmp_path / "2501 RTW Report.pdf").read_bytes() == pdf_bytes
+    assert not (tmp_path / "2603 RTW Report_Letter.pdf").exists()
+
+    assert download_seeded_from_state(state, tmp_path) == 0
