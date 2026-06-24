@@ -8,6 +8,7 @@ from main import (
     download_seeded_from_state,
     documents_for_regular_run,
     factsheet_filename,
+    fetch_html,
     newest_factsheet_document,
     parse_documents,
     results_filename,
@@ -172,6 +173,105 @@ def test_download_pdf_retries_transient_status() -> None:
     assert data == b"pdf"
     assert session.calls == 2
     assert sleeps == [1]
+
+
+class StatusHtmlResponse:
+    def __init__(self, status_code: int, text: str = "") -> None:
+        self.status_code = status_code
+        self.text = text
+        self.reason = "Forbidden"
+
+    def raise_for_status(self) -> None:
+        if self.status_code >= 400:
+            from requests import HTTPError
+            raise HTTPError(f"HTTP Error {self.status_code}: ")
+
+
+class StatusHtmlSession:
+    def __init__(self, responses: list[StatusHtmlResponse]) -> None:
+        self.responses = list(responses)
+        self.calls = 0
+
+    def get(self, url: str, params=None, timeout: int = 30):  # type: ignore[override]
+        self.calls += 1
+        return self.responses.pop(0)
+
+
+def test_fetch_html_retries_403_and_succeeds() -> None:
+    sleeps: list[float] = []
+    session = StatusHtmlSession([
+        StatusHtmlResponse(403, "blocked"),
+        StatusHtmlResponse(403, "blocked"),
+        StatusHtmlResponse(200, "<html>ok</html>"),
+    ])
+
+    html = fetch_html(
+        session,
+        "https://example.com/page",
+        max_retries=4,
+        backoff_base=0.01,
+        backoff_jitter=0.0,
+        sleep_func=sleeps.append,
+    )
+
+    assert html == "<html>ok</html>"
+    assert session.calls == 3
+    assert len(sleeps) == 2
+
+
+def test_fetch_html_raises_after_max_retries_on_403() -> None:
+    import requests
+
+    sleeps: list[float] = []
+    session = StatusHtmlSession([StatusHtmlResponse(403, "blocked")])
+
+    try:
+        fetch_html(
+            session,
+            "https://example.com/page",
+            max_retries=1,
+            backoff_base=0.01,
+            backoff_jitter=0.0,
+            sleep_func=sleeps.append,
+        )
+    except requests.HTTPError:
+        pass
+    else:
+        raise AssertionError("expected HTTPError")
+
+    assert session.calls == 1
+    assert sleeps == []
+
+
+class FlakyTransportSession:
+    def __init__(self, fail_times: int, ok_response: StatusHtmlResponse) -> None:
+        self.fail_times = fail_times
+        self.ok_response = ok_response
+        self.calls = 0
+
+    def get(self, url: str, params=None, timeout: int = 30):  # type: ignore[override]
+        self.calls += 1
+        if self.calls <= self.fail_times:
+            raise requests.ConnectionError("connection reset by peer")
+        return self.ok_response
+
+
+def test_fetch_html_retries_transport_errors() -> None:
+    sleeps: list[float] = []
+    session = FlakyTransportSession(2, StatusHtmlResponse(200, "<html>ok</html>"))
+
+    html = fetch_html(
+        session,
+        "https://example.com/page",
+        max_retries=4,
+        backoff_base=0.01,
+        backoff_jitter=0.0,
+        sleep_func=sleeps.append,
+    )
+
+    assert html == "<html>ok</html>"
+    assert session.calls == 3
+    assert len(sleeps) == 2
 
 
 def test_download_seeded_from_state_saves_output_and_skips_existing(monkeypatch, tmp_path) -> None:

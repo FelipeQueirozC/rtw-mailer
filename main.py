@@ -5,9 +5,11 @@ import base64
 import hashlib
 import json
 import os
+import random
 import re
 import sys
 import time
+import traceback
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -27,10 +29,18 @@ DEFAULT_HEADERS = {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
     ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
 }
-RETRY_STATUSES = {429, 500, 502, 503, 504}
+# 403 is included because Cloudflare fronting rtwfunds.com occasionally returns
+# 403 to CI runner IPs as a soft rate-limit; a short backoff usually succeeds.
+RETRY_STATUSES = {403, 429, 500, 502, 503, 504}
+DEFAULT_PAGE_DELAY_SECONDS = 1.0
+DEFAULT_BACKOFF_BASE_SECONDS = 2.0
+DEFAULT_BACKOFF_JITTER_SECONDS = 1.0
+DEFAULT_MAX_RETRIES = 4
 
 MONTHS = {
     "january": 1,
@@ -242,10 +252,74 @@ def make_http_session() -> Any:
     return session
 
 
-def fetch_html(session: Any, url: str, params: dict[str, Any] | None = None) -> str:
-    response = session.get(url, params=params, timeout=30)
-    response.raise_for_status()
-    return response.text
+def _response_error_message(response: Any) -> str:
+    """Build a useful error message for an unsuccessful response."""
+    status = getattr(response, "status_code", "???")
+    reason = ""
+    try:
+        reason = (response.reason or "").strip()  # type: ignore[attr-defined]
+    except Exception:
+        reason = ""
+    body_preview = ""
+    try:
+        text = getattr(response, "text", "") or ""
+    except Exception:
+        text = ""
+    if text:
+        body_preview = " " + text[:160].replace("\n", " ").replace("\r", " ").strip()
+    suffix = f" {reason}" if reason else ""
+    return f"HTTP {status}{suffix} (body: {body_preview})" if body_preview else f"HTTP {status}{suffix}"
+
+
+def fetch_html(
+    session: Any,
+    url: str,
+    params: dict[str, Any] | None = None,
+    max_retries: int = DEFAULT_MAX_RETRIES,
+    backoff_base: float = DEFAULT_BACKOFF_BASE_SECONDS,
+    backoff_jitter: float = DEFAULT_BACKOFF_JITTER_SECONDS,
+    sleep_func: Any = time.sleep,
+) -> str:
+    """GET a page, retrying transient statuses/transport errors with backoff.
+
+    Logs the URL on failure so Cloudflare 403s are debuggable from CI logs.
+    """
+    last_error: Exception | None = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = session.get(url, params=params, timeout=30)
+        except Exception as exc:
+            last_error = exc
+            if attempt < max_retries:
+                sleep_for = backoff_base * (2 ** (attempt - 1)) + random.uniform(0, backoff_jitter)
+                log(f"GET {url} failed ({type(exc).__name__}: {exc}); retrying in {sleep_for:.1f}s (attempt {attempt}/{max_retries}).")
+                sleep_func(sleep_for)
+                continue
+            log(f"GET {url} failed after {max_retries} attempts: {type(exc).__name__}: {exc}")
+            raise
+
+        status_code = getattr(response, "status_code", None)
+        try:
+            status_int = int(status_code) if status_code is not None else None
+        except (TypeError, ValueError):
+            status_int = None
+
+        if status_int is not None and status_int in RETRY_STATUSES and attempt < max_retries:
+            sleep_for = backoff_base * (2 ** (attempt - 1)) + random.uniform(0, backoff_jitter)
+            log(f"GET {url} -> {_response_error_message(response)}; retrying in {sleep_for:.1f}s (attempt {attempt}/{max_retries}).")
+            sleep_func(sleep_for)
+            continue
+
+        if status_int is not None and status_int >= 400:
+            log(f"GET {url} -> {_response_error_message(response)}")
+            response.raise_for_status()
+
+        return response.text
+
+    # Defensive: loop only exits via return or raise, but keep the type checker happy.
+    if last_error:
+        raise last_error
+    raise RuntimeError(f"Failed to fetch {url}")
 
 
 def scrape_source(
@@ -267,6 +341,10 @@ def scrape_source(
                 params["type"] = ""
 
         log(f"Fetching {label} page {page}")
+        if page > 1:
+            # Politeness delay between paginated requests; helps avoid Cloudflare
+            # rate-limiting on hosted runners.
+            time.sleep(DEFAULT_PAGE_DELAY_SECONDS)
         html = fetch_html(session, source_url, params=params)
         page_url = requests.Request("GET", source_url, params=params).prepare().url or source_url
         page_documents = parse_documents(html, source_page, source_url, page_url)
@@ -312,17 +390,29 @@ def download_pdf(
     for attempt in range(1, retries + 1):
         try:
             response = session.get(url, timeout=60)
-            if response.status_code in RETRY_STATUSES and attempt < retries:
-                sleep_func(delay_seconds)
-                continue
-            response.raise_for_status()
-            return response.content
         except Exception as exc:
             last_error = exc
             if attempt < retries:
                 sleep_func(delay_seconds)
                 continue
+            log(f"GET {url} failed after {retries} attempts: {type(exc).__name__}: {exc}")
             raise
+
+        status_code = getattr(response, "status_code", None)
+        try:
+            status_int = int(status_code) if status_code is not None else None
+        except (TypeError, ValueError):
+            status_int = None
+
+        if status_int is not None and status_int in RETRY_STATUSES and attempt < retries:
+            sleep_func(delay_seconds)
+            continue
+
+        if status_int is not None and status_int >= 400:
+            log(f"GET {url} -> {_response_error_message(response)}")
+            response.raise_for_status()
+
+        return response.content
 
     if last_error:
         raise last_error
@@ -647,7 +737,8 @@ def main(argv: list[str] | None = None) -> int:
             return run_bootstrap(documents, state_path, email_config, Path(args.output_dir))
         return run_regular(documents, state, state_path, email_config)
     except Exception as exc:
-        print(f"Error: {exc}", file=sys.stderr)
+        print(f"Error: {type(exc).__name__}: {exc}", file=sys.stderr)
+        traceback.print_exc(file=sys.stderr)
         return 1
 
 
